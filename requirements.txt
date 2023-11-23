@@ -1,6 +1,6 @@
 asgiref==3.7.2
 bootstrap4==0.1.0
-crispy-bootstrap4==2023.1
+crispy-bootstrap4==2022.1
 dj-database-url==2.1.0
 Django==4.2.7
 django-crispy-forms==2.1
