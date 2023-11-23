@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block title %}SucSure{% endblock %}
+
+{% block content %}
+{% for website in object %}
+<ul class="list-group">
+  <li class="list-group-item d-flex justify-content-between align-items-start">
+    <div class="ms-2 me-auto">
+      <div class="fw-bold">Website - {{website.website}}</div>
+      <a href="{% url 'view' pk=website.id %}">username - {{website.username}}</a>
+    </div>
+  </li>
+</ul>
+{% endfor %}
+<br>
+<br>
+<a href="{% url 'home' %}">home</a>
+<br>
+{% endblock %}

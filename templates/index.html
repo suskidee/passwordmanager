@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}SucSure{% endblock %}
+
+  {% block content %}
+  <div class="container col-xxl-8 px-4 my-5 py-4">
+    <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
+      <div class=" mx-auto col-10 col-sm-8 col-lg-6">
+        <img src="https://th.bing.com/th/id/R.03f1753677629dcd47663dc492ae83eb?rik=ZdLZiOEA8UpRVg&riu=http%3a%2f%2flh3.googleusercontent.com%2flCv88c-kbvQ0LNJSPdbMESBREZah47rqvtuiKIv3f79eRe5oRCao152QDm3I_5-Dpi42%3dh310&ehk=E45zEEqEnsO8J%2f4%2f%2bH6c2tIT0a%2bBVG8kbq0pRsP8wLA%3d&risl=&pid=ImgRaw&r=0" class="d-block mx-lg-auto img-fluid rounded" alt="Bootstrap Themes" width="700" height="500" loading="lazy">
+      </div>
+      <div class="col-lg-6">
+        {% if user.is_authenticated %}
+        <h1 class="display-5 fw-bold text-body-emphasis lh-1 mb-3">welcome {{user.username}}  !</h1>
+        <p class="lead">Ever forgotten a password? well that's in the past because you are covered with SucSure password manager </p>
+        <a href="{% url 'add' %}"><button type="button" class="btn btn-outline-info btn-lg px-5 me-md-2">add new</button></a>
+        {% else %}
+        <h1 class="display-5 fw-bold text-body-emphasis lh-1 mb-3">Password Manager</h1>
+        <p class="lead">Ever forgotten a password? well that's in the past because with SucSure password manager, you only need one password to access all your passwords.    </p>
+        {% endif %}
+        <div>
+          {% if not user.is_authenticated %}
+          <a href="{% url 'login' %}"><button type="button" class="btn btn-outline-info btn-lg px-5 me-md-2">Login</button></a>
+          <a href="{% url 'register' %}"><button type="button" class="btn btn-outline-warning btn-lg px-5">Sign Up</button></a>
+          {% else %}
+          
+          <div class="bd-example m-0 border-0 my-5">
+            <h3>search</h3>
+            <hr>
+            <div class="container-fluid">
+              <form method="POST">
+                {% csrf_token %}
+                {{ form|crispy }}
+                <button type="submit" class="btn btn-secondary my-3">Search</button>
+              </form>
+            </div>
+          </div>
+          <a href="{% url 'all' %}">view all</a>
+          {% endif  %}
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endblock %}
