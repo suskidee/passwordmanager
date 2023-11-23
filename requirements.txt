@@ -2,7 +2,7 @@ asgiref==3.7.2
 bootstrap4==0.1.0
 crispy-bootstrap4==2022.1
 dj-database-url==2.1.0
-Django==4.2.7
+Django==3.2.23
 django-crispy-forms==2.1
 gunicorn==21.2.0
 packaging==23.2
