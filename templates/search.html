@@ -3,6 +3,7 @@
 {% block title %}SucSure{% endblock %}
 
 {% block content %}
+{% if object %}
 {% for website in object %}
 <ul class="list-group">
   <li class="list-group-item d-flex justify-content-between align-items-start">
@@ -13,6 +14,9 @@
   </li>
 </ul>
 {% endfor %}
+{% else %}
+<h2>search does not exist. check spelling and try again</h2>
+{% endif %}
 <br>
 <br>
 <a href="{% url 'home' %}">home</a>
